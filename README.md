@@ -6,6 +6,29 @@
 [![Latest Version](https://shields.mitmproxy.org/pypi/v/mitmproxy.svg)](https://pypi.python.org/pypi/mitmproxy)
 [![Supported Python versions](https://shields.mitmproxy.org/pypi/pyversions/mitmproxy.svg)](https://pypi.python.org/pypi/mitmproxy)
 
+## Changes from fork
+
+This is exatly the same as the original, however I made changes to the wireguard mode. Instead of the wireguard server needing the client private key, it now only requres the client public key. Why this was not always the case bewilders me.
+
+So in your `wireguard.conf` file you will now have
+
+```
+{
+    "server_key": "server private key",
+    "client_key": "client public key"
+}
+```
+
+And you can run it from the command line with the command
+
+```
+mitmdump -s addon.py --mode wireguard:/path/to/wireguard.conf@51820
+```
+
+Future me may update `client_key` to `client_pub_key` with no warning so I would not use this fork if I were you.
+
+## About
+
 ``mitmproxy`` is an interactive, SSL/TLS-capable intercepting proxy with a console
 interface for HTTP/1, HTTP/2, and WebSockets.
 
