@@ -393,7 +393,8 @@ class WireGuardServerInstance(ServerInstance[mode_specs.WireGuardMode]):
         except Exception as e:
             raise ValueError(f"Invalid configuration file ({conf_path}): {e}") from e
         # error early on invalid keys
-        p = mitmproxy_rs.pubkey(self.client_key)
+        #p = mitmproxy_rs.pubkey(self.client_key)
+        p = self.client_key # client_key is now the public client key
         _ = mitmproxy_rs.pubkey(self.server_key)
 
         self._server = await mitmproxy_rs.start_wireguard_server(
