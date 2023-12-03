@@ -418,7 +418,7 @@ class WireGuardServerInstance(ServerInstance[mode_specs.WireGuardMode]):
         return textwrap.dedent(
             f"""
             [Interface]
-            PrivateKey = {self.client_key}
+            PrivateKey = <client priv key>
             Address = 10.0.0.1/32
             DNS = 10.0.0.53
 
